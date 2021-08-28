@@ -1,27 +1,103 @@
 {
     "compilerOptions": {
-        "moduleResolution": "node",
-        "target": "es5",
-        "module": "CommonJS",
+        /* Visit https://aka.ms/tsconfig.json to read more about this file */
+        /* Basic Options */
+        // "incremental": true,                      /* 启用增量编译，修改代码时，仅对修改相关的部分进行编译，节省开发编译时间，noEmit为true时，无法开启 */
+        "target": "es5", /* 编译后的语言: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+        "module": "commonjs", /* 编译后的模块系统: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
         "lib": [
-            "esnext"
-        ],
-        "strict": true,
-        "sourceMap": true,
-        "declaration": true,
-        "allowSyntheticDefaultImports": true,
-        "declarationDir": "./dist",
-        "outDir": "./dist",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "esModuleInterop": true
+            "DOM",
+            "es5",
+            "es2015",
+            "es6"
+        ], /* 编译过程中解析代码用到的库. */
+        "allowJs": false, /* 是否允许ts中引用js文件. */
+        "checkJs": false, /* 是否检查js中的ts错误. */
+        "jsx": "react", /* jsx编译后输出的形式和文件名: 'preserve'(保留jsx输出.jsx), 'react-native'(保留jsx输出js), or 'react'(jsx.createElement输出js). */
+        "declaration": false, /* 是否输出声明文件 '.d.ts' file. */
+        "declarationMap": false, /* 是否输出声明文件的source map */
+        "sourceMap": true, /* 是否输出文件的source map文件. */
+        // "outFile": "./",                       /* 将编译结果输出为单个文件，仅module为amd和system支持. */
+        // "outDir": "./dist",                     /* 资源输出目录,webpack帮助编译，这里无需输出. */
+        // "rootDir": "./src",                     /* 需要编译的资源目录,includes替代 */
+        // "composite": true,                     /* ts文件是否会被其他项目引用，被其他项目引用时必须开启declaration */
+        // "tsBuildInfoFile": "./",               /* 增量编译的日志信息 */
+        "removeComments": false, /* 是否编译时删除注释代码. */
+        "noEmit": true, /* 仅类型检查，不生成输出文件，与webpack等框架一同使用时可能不需要输出. */
+        // "importHelpers": true, /* 自动引用tslib并使用其提供的方法库，需要npm i tslib.建议开启防止打包报错 */
+        "downlevelIteration": true, /* 当target为'ES5' or 'ES3'时，为'for-of', spread, and destructuring'中的迭代器提供完全支持. */
+        "isolatedModules": false, /* 是否将每个文件作为单独的模块，默认为true，它不可以和declaration同时设定. */
+        /* Strict Type-Checking Options */
+        "strict": true, /* 是否启用严格模式，启用时下边几个选项如果不配置也默认开启. */
+        "noImplicitAny": true, /* 未明确类型的数据进行报错. */
+        "strictNullChecks": true, /* 是否启用严格的null类型检查，开启时null和undefined不能互相赋值，但是undefined赋值为void不受限制. */
+        "strictFunctionTypes": true, /* 是否对函数参数双向协变检查,是否允许函数参数像对象一样拥有类型兼容. */
+        "strictBindCallApply": true, /* 是否对bind、call和apply绑定的方法的参数严格检测. */
+        "strictPropertyInitialization": true, /* 检查类的非undefined属性是否已经在构造函数里初始化，如果要开启这项，需要同时开启strictNullChecks. */
+        "noImplicitThis": true, /* 当this表达式的值为any类型的时候，生成一个错误. */
+        "alwaysStrict": true, /* 始终以严格模式检查每个模块，并且在编译之后的js文件中加入"use strict"字符串，用来告诉浏览器该js为严格模式. */
+        /* Additional Checks */
+        "noUnusedLocals": false, /* 报告定义了但是没有使用的变量. */
+        "noUnusedParameters": false, /* 报告在函数体中没有使用的参数. */
+        "noImplicitReturns": true, /* 检查函数是否有返回值. */
+        "noFallthroughCasesInSwitch": true, /* 检查switch中是否有case没有使用break跳出switch. */
+        /* Module Resolution Options */
+        "moduleResolution": "node", /* 引入模块时的解析策略 classic或node. */
+        //'classic':相对路径在指定目录下查找，绝对路径则逐级向外查找ts或.d.ts
+        //'node':相对路径在指定目录查找，然后在指定目录package.json中找main入口，然后在指定目录中找index文件，绝对路径则去node_modules下查找
+        "baseUrl": "./", /* 设置解析绝对路径模块的基本目录，相对模块不会受baseUrl的影响. */
+        "paths": { /* 用于设置绝对路径模块映射，优先于moduleResolution配置，此配置并不影响使用时查找逻辑，仅为了类型检查，需和baseUrl配合使用，这里是配合webpack的alias使用. */
+            "@src/*": [
+                "./src/*"
+            ],
+            "@assets/*": [
+                "./public/assets/*"
+            ],
+            "@component/*": [
+                "./src/components/*"
+            ]
+        },
+        "rootDirs": [], /* 在构建时编译器会将这个路径列表中的路径的内容都放到一个文件夹中，用于输出文件分类. */
+        // "typeRoots": [],                       /* 指定声明文件或文件夹的路径列表，如果指定了此项，则只有在这里列出的声明文件才会被加载. */
+        // "types": [],                           /* 指定需要包含的模块，只有在这里列出的模块的声明文件才会被加载进来. */
+        "allowSyntheticDefaultImports": true, /* 是否允许从没有默认导出的模块中默认导入(import React from 'react'相当于import * as React from 'react')，此配置不影响代码逻辑，仅为类型检查. */
+        "esModuleInterop": true, /* 处理第三方库，通过为导入内容创建命名空间，从而让使用CommonJS编写的老的js库可以被导入，比如fs模块，此配置将自动处理commonjs中exports没有default的问题. */
+        "preserveSymlinks": true, /* 不把符号链接解析为其真实路径. */
+        "allowUmdGlobalAccess": true, /* 允许UMD模块全局声明被导入 */
+        /* Source Map Options */
+        // "sourceRoot": "",                      /* 指定调试器应该定位TypeScript文件而不是源文件的位置. */
+        // "mapRoot": "",                         /* 指定调试器应该定位映射文件. */
+        // "inlineSourceMap": true,               /* 是否将source map集成到输出文件中. */
+        // "inlineSources": true,                 /* 是否进一步将.ts文件的内容也包含到输入文件中. */
+        /* Experimental Options */
+        "experimentalDecorators": true, /* 是否启用ES7的装饰器校验. */
+        "emitDecoratorMetadata": true, /* 是否为装饰器提供元数据支持. */
+        /* Advanced Options */
+        "skipLibCheck": true, /* 忽略所有的声明文件（ *.d.ts）的类型检查. */
+        "forceConsistentCasingInFileNames": true, /* 禁止对同一个文件的不一致的引用. */
+        "locale": "zh-CN", /* 显示错误信息时使用的语言. */
+        "charset": "utf8", /* 设置输入文件的字符集. */
+        "diagnostics": false, /* 显示诊断信息. */
+        "disableSizeLimit": false, /* 禁用JavaScript工程体积大小的限制. */
+        "extendedDiagnostics": false, /* 显示详细的诊段信息. */
+        "keyofStringsOnly": true, /* 对象键值必须是string类型. */
+        "noEmit": false, // 不生成输出文件
+        "noEmitHelpers": true, /* 不在输出文件中生成用户自定义的帮助函数代码，如 __extends. */
+        "noEmitOnError": false, /* 报错时不生成输出文件. */
+        "noErrorTruncation": false, /* 不截断错误消息，显示整段错误信息. */
+        "preserveConstEnums": false, /* 保留 const和 enum声明. */
+        "pretty": true, /* 给错误和消息设置样式，使用颜色和上下文. */
+        "resolveJsonModule": true, /* 解析json文件. */
+        "skipDefaultLibCheck": true, /* 忽略库的默认声明文件的类型检查. */
+        "stripInternal": true, /* 不对具有 /** @internal **\/ JSDoc注解的代码生成代码. */
+        "help": true, /* 打印帮助信息. */
+        "traceResolution": false /* 生成模块解析日志信息. */
     },
     "include": [
-        "src/**/*.ts",
-        "src/*.ts"
+        "./src/**/*"
     ],
     "exclude": [
-        "./node_modules"
+        "./dist/**/*",
+        "./src/services/**/*"
     ]
 }
