@@ -23,7 +23,7 @@
         // "composite": true,                     /* ts文件是否会被其他项目引用，被其他项目引用时必须开启declaration */
         // "tsBuildInfoFile": "./",               /* 增量编译的日志信息 */
         "removeComments": false, /* 是否编译时删除注释代码. */
-        "noEmit": true, /* 仅类型检查，不生成输出文件，与webpack等框架一同使用时可能不需要输出. */
+        "noEmit": false, /* 仅类型检查，不生成输出文件，与webpack等框架一同使用时可能不需要输出. */
         // "importHelpers": true, /* 自动引用tslib并使用其提供的方法库，需要npm i tslib.建议开启防止打包报错 */
         "downlevelIteration": true, /* 当target为'ES5' or 'ES3'时，为'for-of', spread, and destructuring'中的迭代器提供完全支持. */
         "isolatedModules": false, /* 是否将每个文件作为单独的模块，默认为true，它不可以和declaration同时设定. */
@@ -81,7 +81,6 @@
         "disableSizeLimit": false, /* 禁用JavaScript工程体积大小的限制. */
         "extendedDiagnostics": false, /* 显示详细的诊段信息. */
         "keyofStringsOnly": true, /* 对象键值必须是string类型. */
-        "noEmit": false, // 不生成输出文件
         "noEmitHelpers": true, /* 不在输出文件中生成用户自定义的帮助函数代码，如 __extends. */
         "noEmitOnError": false, /* 报错时不生成输出文件. */
         "noErrorTruncation": false, /* 不截断错误消息，显示整段错误信息. */
